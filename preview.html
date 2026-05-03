@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WhatsApp Message Sender</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background:#f5f5f5;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+    }
+
+    .box{
+        background:white;
+        padding:30px;
+        width:320px;
+        border-radius:10px;
+        box-shadow:0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2{
+        text-align:center;
+        margin-bottom:20px;
+    }
+
+    input, textarea{
+        width:100%;
+        padding:10px;
+        margin-top:10px;
+        border:1px solid #ccc;
+        border-radius:5px;
+        font-size:15px;
+    }
+
+    button{
+        width:100%;
+        padding:12px;
+        margin-top:15px;
+        background:#25D366;
+        color:white;
+        border:none;
+        border-radius:5px;
+        font-size:16px;
+        cursor:pointer;
+    }
+
+    button:hover{
+        background:#1ebe5d;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>WhatsApp Sender</h2>
+
+    <input type="text" id="name" placeholder="Enter Name">
+
+    <input type="text" id="number" placeholder="Enter WhatsApp Number">
+
+    <textarea id="message" rows="4" placeholder="Enter Message"></textarea>
+
+    <button onclick="sendWhatsApp()">
+        Send WhatsApp Message
+    </button>
+
+</div>
+
+<script>
+
+function sendWhatsApp(){
+
+    let name = document.getElementById("name").value;
+    let number = document.getElementById("number").value;
+    let message = document.getElementById("message").value;
+
+    // Country code add
+    number = "91" + number;
+
+    // Final message
+    let finalMessage = 
+    "Hello " + name + 
+    ",\n\n" + 
+    message;
+
+    // WhatsApp URL
+    let url = "https://wa.me/" + number + "?text=" + encodeURIComponent(finalMessage);
+
+    // Open WhatsApp
+    window.open(url, "_blank");
+}
+
+</script>
+
+</body>
+</html>
